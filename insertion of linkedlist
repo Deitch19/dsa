@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+
+struct Node 
+{
+    int value;
+    Node* next;
+};
+
+Node* head = nullptr;
+
+void append(int data)
+{
+    Node* nextNode = new Node();
+    nextNode->value = data;
+    nextNode->next = nullptr;
+
+    if (head == nullptr) 
+    {
+        head = nextNode;
+    } 
+    else 
+    {
+        Node* temp = head;
+        while (temp->next != nullptr) 
+        {
+            temp = temp->next;
+        }
+        temp->next = nextNode;
+    }
+}
+
+void insertAtLast(int data)
+{
+    Node* nextNode = new Node();
+    nextNode->value = data;
+    nextNode->next = nullptr;
+
+    if (head == nullptr) 
+    {
+        head = nextNode;
+    } 
+    else 
+    {
+        Node* temp = head;
+        while (temp->next != nullptr) 
+        {
+            temp = temp->next;
+        }
+        temp->next = nextNode;
+    }
+}
+
+void insertAtFirst(int data)
+{
+    Node* firstNode = new Node();
+    firstNode->value = data;
+    firstNode->next = head;
+    head = firstNode;
+}
+
+// void insertAtLocation(int data , int pos)
+// {
+//     Node* nextNode = new Node();
+//     nextNode->value = data;
+//     for(int i = 0 ; i <=  )
+// }
+
+void display()
+{
+    Node* ptr = head;
+    cout << "Linked List: ";
+    while (ptr != nullptr) 
+    {
+        cout << ptr->value << " -> ";
+        ptr = ptr->next;
+    }
+    cout << "nullptr" << endl;
+}
+ 
+int main() 
+{
+    int value;
+    
+    append(10);
+    append(20);
+    append(30);
+    append(40);
+
+    cout << "Enter the value you want to insert : "; 
+    cin >> value;
+    insertAtLast(value);
+    insertAtFirst(value);
+    
+    display();
+
+    return 0;
+}
